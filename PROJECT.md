@@ -123,6 +123,6 @@ See `TRACKER_MVP_SPEC.md` for current MVP specification and `MVP_BUILD_PLAN.md` 
 - New tracker should be password-protected so only Wegene members can access it.
 - MVP auth method: shared/site-wide member password.
 - Pass-list names can be visible to members.
-- Member call list can be visible/open inside the password-protected member site for MVP.
+- Member call list is removed from the member MVP for now.
 - Netlify/GitHub/Gmail project account email: `jakliluopenclaw@gmail.com`.
 - Do not store account password in files or memory. Use credentials only with Jay's explicit approval for login/setup actions.

@@ -10,7 +10,7 @@ Enhance/rebuild the current hosting tracker while preserving the family’s exis
 - Shows member names and photos.
 - Current active member can choose **Host** or **Pass**.
 - If hosting, member selects a date at least 3 weeks from today.
-- Member call list / phone numbers can be visible to all logged-in members inside the shared-password member site for MVP.
+- Member call list / phone numbers are removed from the member MVP for now.
 - If passing, member goes to a pass list.
 - After someone hosts, the next turn should come from the pass list first, then return to assigned order if pass list is empty.
 - Telegram reminders should be added.
@@ -98,7 +98,8 @@ Admin should support:
 
 Member-only behind shared password:
 
-- Member call list / phone numbers can be visible to logged-in members for MVP.
+- Member names, hosting status, pass list, and history are visible to logged-in members.
+- Member call list / phone numbers are removed from the member MVP for now.
 
 Admin-only / not public:
 
@@ -115,7 +116,7 @@ Admin-only / not public:
 - Current public history page appears to include a clear-history POST button; destructive controls must be admin-only.
 - Host/pass POST endpoints should be behind the member password and protected against accidental/unauthorized state changes.
 - Current host button/date input appear disabled in rendered HTML.
-- Phone/call list should not be visible outside the member password gate; it may be member-visible for MVP.
+- Phone/call list should not be visible in the member MVP for now.
 - Pass list is core behavior and may show names to logged-in members.
 - No obvious audit trail.
 - No obvious Telegram reminder control/status.
@@ -125,7 +126,7 @@ Admin-only / not public:
 
 - `/` member dashboard/tracker behind shared member password
 - `/history` member-visible hosting history
-- `/members` member-visible list and call list for MVP
+- `/members` member-visible list, without call list for now
 - `/admin` separately protected admin area
 - `/host` or current-member action flow behind member password
 - `/payments` placeholder/link to existing invoice/payment site later, behind member password
@@ -140,7 +141,7 @@ Member-visible behind shared password:
 - Scheduled hosting date
 - Hosting history
 - Pass list summary with member names
-- Member call list with phone numbers for MVP
+- No member call list for now
 
 Current member flow:
 
@@ -177,6 +178,6 @@ MVP approach recommendation:
 1. Start with simple site-wide/shared member password protection for all tracker pages.
 2. Keep admin controls behind a separate stronger admin password/login.
 3. Pass-list names may be visible to members.
-4. Member call list / phone numbers may be visible to logged-in members for MVP because the whole site is password-protected.
-5. Do not expose admin tools, delete actions, Telegram settings, or audit logs to regular members.
+4. Member call list / phone numbers are removed from the member MVP for now.
+5. Do not expose admin tools, delete actions, Telegram settings, audit logs, private notes, or contact details to regular members.
 6. Later upgrade to per-member login if needed.

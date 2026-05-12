@@ -212,10 +212,6 @@ function render(data) {
     </tr>`;
   }).join('');
 
-  $('call-list-table').innerHTML = sortedActiveMembers(data).map(member => `<tr>
-    <td>${member.rotationOrder}</td><td class="name-cell">${renderAvatar(member)} ${member.name}</td><td>${member.phone || '(pending)'}</td>
-  </tr>`).join('');
-
   $('history-table').innerHTML = data.history.map(row => `<tr>
     <td>${row.memberName}</td><td>${row.hostingDate}</td><td>${row.round}</td><td>${badge(row.status)}</td><td>${row.notes || ''}</td>
   </tr>`).join('');

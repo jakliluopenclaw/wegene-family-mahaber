@@ -51,12 +51,12 @@ netlify.toml                Static Netlify publish config
 
 - Use a shared/site-wide member password for the member site MVP.
 - Show pass-list names to logged-in members.
-- Show member call list / phone numbers inside the password-protected member site for MVP.
+- Member call list is removed from the member MVP for now.
 - Keep admin tools behind separate admin protection.
 - Do not store passwords, account secrets, Telegram tokens, or private credentials in repo files.
 
 ## Pending decisions
 
-- Provide approved member photos and private phone list, if/when ready.
+- Provide approved member photos if/when ready.
 - Choose backend/data store for production state changes; static localStorage is prototype-only.
 - Decide exact admin auth implementation for production.
