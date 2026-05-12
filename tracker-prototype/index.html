@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Wegene Family Mahaber Tracker</title>
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+  <section class="login-screen" id="login-screen">
+    <form class="login-card" id="login-form">
+      <h1>🌿 Wegene Family Mahaber</h1>
+      <p>Member-only hosting tracker. Enter the shared member password to continue.</p>
+      <label for="member-password">Shared member password</label>
+      <input type="password" id="member-password" autocomplete="current-password" required />
+      <button type="submit">Enter tracker</button>
+      <p class="error" id="login-error" hidden>Incorrect password. Please try again.</p>
+    </form>
+  </section>
+
+  <div id="app-shell" hidden>
+  <header>
+    <h1>🌿 Wegene Family Mahaber Tracker</h1>
+    <p>Member-only MVP for the enhanced hosting rotation tracker. Shared member password protects the tracker; admin tools remain separate. Demo changes are saved only in this browser using localStorage.</p>
+    <nav>
+      <a href="index.html">Tracker</a>
+      <a href="#history">History</a>
+      <a href="admin.html">Admin mock</a>
+      <a href="telegram-reminders.md">Telegram notes</a>
+      <button class="ghost small" id="logout-button" type="button">Log out</button>
+    </nav>
+  </header>
+
+  <main class="stack">
+    <section class="hero">
+      <div class="card stack">
+        <div>
+          <h2>Current turn</h2>
+          <p id="current-summary">Loading current member…</p>
+        </div>
+        <div class="actions" id="current-actions"></div>
+        <div id="validation-message" class="notice" hidden></div>
+      </div>
+      <aside class="card stack">
+        <div>
+          <h2>Pass queue</h2>
+          <p>After a hosting is completed, the oldest passed member gets priority before normal order continues.</p>
+          <div id="pass-queue"></div>
+        </div>
+        <div class="notice private">
+          <strong>Member-site privacy:</strong> pass-list names and the member call list may be visible to logged-in members for MVP. This prototype keeps real phone values out until approved data is provided.
+        </div>
+      </aside>
+    </section>
+
+    <section class="card">
+      <h2>Assigned rotation order</h2>
+      <div class="member-table-wrap">
+        <table class="member-list">
+          <thead>
+            <tr><th>Order</th><th>Member</th><th>Status</th><th>Date</th></tr>
+          </thead>
+          <tbody id="member-table"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="grid">
+      <div class="card">
+        <h2>How the automatic rotation works</h2>
+        <ol>
+          <li>Current member chooses <strong>Host</strong> or <strong>Pass</strong>.</li>
+          <li>Host date must be at least <strong>21 days from today</strong>.</li>
+          <li>If they pass, they enter the pass queue.</li>
+          <li>When a scheduled hosting is confirmed complete, the system checks the pass queue first.</li>
+          <li>If the pass queue is empty, normal assigned order continues.</li>
+        </ol>
+      </div>
+      <div class="card">
+        <h2>Demo controls</h2>
+        <p>Use these to reset or inspect the local browser simulation. No external data is changed.</p>
+        <div class="actions">
+          <button class="ghost" id="reset-demo">Reset demo data</button>
+          <button class="ghost" id="export-state">Export JSON</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="card" id="call-list">
+      <h2>Member call list</h2>
+      <p>Visible to logged-in members for MVP. Real phone numbers can be added once Jay approves the final data.</p>
+      <div class="member-table-wrap">
+        <table class="member-list">
+          <thead><tr><th>Order</th><th>Member</th><th>Phone</th></tr></thead>
+          <tbody id="call-list-table"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="card" id="history">
+      <h2>Hosting history</h2>
+      <p>History is intended for logged-in members. Destructive clear/delete controls and admin-only data stay out of the member view.</p>
+      <div class="member-table-wrap">
+        <table class="member-list">
+          <thead><tr><th>Name</th><th>Hosting Date</th><th>Round</th><th>Status</th><th>Notes</th></tr></thead>
+          <tbody id="history-table"></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <footer>MVP build — member password gate is client-side for this first launch; no PayPal/Telegram credentials are stored here.</footer>
+  </div>
+  <script src="assets/config.js"></script>
+  <script src="assets/app.js"></script>
+</body>
+</html>

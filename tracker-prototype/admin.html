@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Admin Mock — Wegene Tracker</title>
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+  <header>
+    <h1>⚙️ Wegene Tracker Admin Mock</h1>
+    <p>Local design placeholder only. No real login, no secrets, and no external integrations are included.</p>
+    <nav>
+      <a href="index.html">Tracker</a>
+      <a href="admin.html">Admin mock</a>
+    </nav>
+  </header>
+
+  <main class="stack">
+    <section class="card notice private">
+      <h2>Protection placeholder</h2>
+      <p>Production should require member password/login for tracker pages, plus a stronger admin login for these controls. This mock intentionally stores no password.</p>
+    </section>
+
+    <section class="grid">
+      <div class="card">
+        <h2>Member management</h2>
+        <ul>
+          <li>Add/edit/deactivate head members</li>
+          <li>Set assigned rotation order</li>
+          <li>Upload/update photos</li>
+          <li>Maintain member call list / phone numbers shown inside the member-password site for MVP</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h2>Rotation controls</h2>
+        <ul>
+          <li>Set current get-ready member</li>
+          <li>View/reorder pass queue</li>
+          <li>Mark scheduled event as hosted</li>
+          <li>Skip/cancel/correct mistakes with audit log</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h2>Telegram reminders</h2>
+        <ul>
+          <li>Reminder to current member to host/pass</li>
+          <li>Reminder after date is scheduled</li>
+          <li>Reminder to family before gathering</li>
+          <li>Admin alert when no response</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h2>Data safety</h2>
+        <ul>
+          <li>Export members/history/state as JSON/CSV</li>
+          <li>No member-facing clear-history button</li>
+          <li>No bot tokens or secrets in frontend files</li>
+          <li>Audit log for all admin actions</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Admin-only data that must remain separately protected</h2>
+      <p>Admin controls, Telegram chat IDs, bot tokens, private notes, delete buttons, payment admin data, audit logs, and credentials. Phone numbers may be visible inside the member-password site for MVP, but should not be exposed publicly.</p>
+    </section>
+  </main>
+</body>
+</html>
