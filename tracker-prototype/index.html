@@ -23,7 +23,6 @@
     <h1>🌿 Wegene Family Mahaber Tracker</h1>
     <nav>
       <a href="index.html">Tracker</a>
-      <a href="#history">History</a>
       <a href="admin.html">Admin mock</a>
       <a href="telegram-reminders.md">Telegram notes</a>
       <button class="ghost small" id="logout-button" type="button">Log out</button>
@@ -60,9 +59,9 @@
         <ol>
           <li>Current member chooses <strong>Host</strong> or <strong>Pass</strong>.</li>
           <li>Host date must be at least <strong>21 days from today</strong>.</li>
-          <li>If they pass, they enter the pass queue.</li>
-          <li>When a scheduled hosting is confirmed complete, the system checks the pass queue first.</li>
-          <li>If the pass queue is empty, normal assigned order continues.</li>
+          <li>If they pass, the main tracker labels them <strong>Passed</strong>.</li>
+          <li>Once someone hosts, they move to the bottom of the rotation list.</li>
+          <li>The next person in the list becomes <strong>Get Ready</strong>.</li>
         </ol>
       </div>
       <div class="card">
@@ -72,17 +71,6 @@
           <button class="ghost" id="reset-demo">Reset demo data</button>
           <button class="ghost" id="export-state">Export JSON</button>
         </div>
-      </div>
-    </section>
-
-    <section class="card" id="history">
-      <h2>Hosting history</h2>
-      <p>History is intended for logged-in members. Destructive clear/delete controls and admin-only data stay out of the member view.</p>
-      <div class="member-table-wrap">
-        <table class="member-list">
-          <thead><tr><th>Name</th><th>Hosting Date</th><th>Round</th><th>Status</th><th>Notes</th></tr></thead>
-          <tbody id="history-table"></tbody>
-        </table>
       </div>
     </section>
   </main>

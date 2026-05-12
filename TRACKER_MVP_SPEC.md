@@ -12,7 +12,7 @@ Enhance/rebuild the current hosting tracker while preserving the family’s exis
 - If hosting, member selects a date at least 3 weeks from today.
 - Member call list / phone numbers are removed from the member MVP for now.
 - If passing, member goes to a pass list.
-- After someone hosts, the next turn should come from the pass list first, then return to assigned order if pass list is empty.
+- After someone hosts, they move to the bottom of the rotation list and the next active member becomes Get Ready.
 - Telegram reminders should be added.
 - Admin page is needed for Jay/Meridian to fix and manage issues.
 
@@ -39,9 +39,9 @@ Visible members:
 15. Woubshet
 16. Wosene
 
-Current observed state:
+Current confirmed state:
 
-- Mengistu: Hosted, 2026-06-01
+- Mengistu: Hosted, 2026-04-05; moved to the bottom of the rotation list.
 - Yoni: Get Ready
 
 ## Rotation Rule
@@ -61,13 +61,9 @@ When current member chooses HOST:
 
 When hosting is confirmed complete:
   set status = hosted
-  add hosting history record
-
-  if pass_queue is not empty:
-    next_member = pass_queue.pop_oldest()
-  else:
-    next_member = next active member in assigned order
-
+  save hosting date for the member's row in the main tracker
+  move hosted member to bottom of rotation list
+  next_member = next active member in assigned order
   set next_member = get_ready
 
 When current member chooses PASS:
@@ -139,7 +135,7 @@ Member-visible behind shared password:
 - Status badges: Hosted, Get Ready, Scheduled, Passed, Waiting
 - Current host/get-ready card
 - Scheduled hosting date
-- Hosting history
+- Hosted dates shown directly in the main tracker
 - Passed members labeled in the main tracker; no separate pass queue section on the member page
 - No member call list for now
 

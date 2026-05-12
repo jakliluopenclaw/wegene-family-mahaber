@@ -41,7 +41,7 @@ Start with a simple, useful Netlify site:
 
 - Home/dashboard
 - Hosting tracker
-- Hosting history
+- Hosted dates shown in the main tracker
 - Payments page linking to existing PayPal flows
 - Admin area
 - Later: member directory, payment tracking, auth, export, reminders, and PayPal webhook integration if needed
@@ -50,7 +50,7 @@ Start with a simple, useful Netlify site:
 ## Confirmed Direction from Jay
 
 - Superseded by later privacy decision: the MVP tracker should be member-only behind a shared/site-wide member password.
-- Member/family names, pass-list names, and the member call list may be visible to logged-in members for MVP.
+- Member/family names and pass/hosted status labels may be visible to logged-in members for MVP; member call list is removed for now.
 - Admin tools remain separately protected and should not be accessible with only the member password.
 - Host rotation is currently automatic; new tracker should preserve or improve automatic rotation.
 - Wegene collects monthly dues, but invoices are sent every four months through PayPal.
@@ -74,8 +74,8 @@ Recommended future fit:
 Pages:
 
 - `/` member dashboard / current host tracker, behind shared member password
-- `/hosting/history` member-visible hosting history
-- `/members` member-visible member list and call list for MVP
+- Hosted dates shown directly in the main tracker instead of a separate history page
+- `/members` member-visible member list, without call list for now
 - `/payments` placeholder/link area for existing PayPal invoice flow, member-visible only
 - `/admin` separately protected admin management area
 
@@ -84,9 +84,9 @@ Automatic host rotation recommendation:
 1. Keep members in a fixed assigned rotation order.
 2. Current/get-ready member can choose host or pass.
 3. If member hosts, they select/schedule a date at least three weeks out.
-4. If member passes, add them to the pass list and continue normal assigned order.
-5. After a scheduled hosting is confirmed complete, choose the next host from the pass list first.
-6. If the pass list is empty, continue normal assigned order.
+4. If member passes, label them Passed in the main tracker and continue normal assigned order.
+5. After a scheduled hosting is confirmed complete, show the hosted date in the main tracker and move that member to the bottom of the rotation list.
+6. The next active member in the list becomes Get Ready so the list keeps going.
 7. Admin can override when needed.
 
 ## Open Questions
@@ -112,8 +112,8 @@ Correct behavior:
 - Current member chooses host or pass.
 - If they host, they choose a date at least three weeks from today.
 - If they pass, they go to the pass list.
-- After someone hosts, the next turn should come from the pass list first.
-- If pass list is empty, continue normal assigned order.
+- Once someone hosts, their hosted date is shown in the main tracker and they move to the bottom of the rotation list.
+- The next active member in the list becomes Get Ready so the list keeps going.
 
 See `TRACKER_MVP_SPEC.md` for current MVP specification and `MVP_BUILD_PLAN.md` for the first implementation steps.
 

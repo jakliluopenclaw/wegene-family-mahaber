@@ -1,4 +1,4 @@
-const STORAGE_KEY = 'wegene-tracker-mvp-v2';
+const STORAGE_KEY = 'wegene-tracker-mvp-v3';
 const DAY_MS = 24 * 60 * 60 * 1000;
 const CONFIG = window.WEGENE_CONFIG || {};
 
@@ -120,10 +120,11 @@ function scheduleHost(data, dateValue) {
     return showMessage(`Please choose a date at least 3 weeks from today: ${minHostDate()} or later.`);
   }
   data.state.scheduled = { memberId: data.state.currentMemberId, date: dateValue, status: 'scheduled' };
+  data.state.passQueue = data.state.passQueue.filter(id => id !== data.state.currentMemberId);
   data.state.updatedAt = new Date().toISOString();
   save(data);
   render(data);
-  showMessage('Hosting date scheduled in local demo. Logged-in members can view the MVP call list; reminders would be triggered in production.');
+  showMessage('Hosting date scheduled. After hosting is confirmed, this member will move to the bottom of the rotation list.');
 }
 
 function passCurrentMember(data) {
@@ -155,13 +156,16 @@ function confirmHosted(data) {
     notes: 'Confirmed in local prototype demo.'
   });
   data.state.lastHostedMemberId = hostedMember.id;
+  const hostedOrder = hostedMember.rotationOrder;
+  const maxOrder = Math.max(...sortedActiveMembers(data).map(member => member.rotationOrder));
   let next;
   if (data.state.passQueue.length) {
     const nextId = data.state.passQueue.shift();
     next = memberById(data, nextId);
   } else {
-    next = nextInMainOrder(data, hostedMember.rotationOrder);
+    next = nextInMainOrder(data, hostedOrder);
   }
+  hostedMember.rotationOrder = maxOrder + 1;
   data.state.currentMemberId = next.id;
   data.state.mainPointerOrder = next.rotationOrder;
   data.state.scheduled = null;
@@ -208,9 +212,6 @@ function render(data) {
     </tr>`;
   }).join('');
 
-  $('history-table').innerHTML = data.history.map(row => `<tr>
-    <td>${row.memberName}</td><td>${row.hostingDate}</td><td>${row.round}</td><td>${badge(row.status)}</td><td>${row.notes || ''}</td>
-  </tr>`).join('');
 }
 
 async function boot() {

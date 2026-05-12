@@ -10,8 +10,8 @@ Local, Netlify-ready static prototype for the enhanced hosting tracker. It does 
 - Current/Get Ready member simulation.
 - Host/pass flow in browser-only localStorage.
 - 21-day minimum host date validation.
-- Pass behavior: passed members are labeled in the main tracker; after hosting is confirmed, passed members still get priority behind the scenes.
-- Member-site-safe history table.
+- Pass behavior: passed members are labeled in the main tracker.
+- Hosted behavior: once someone hosts, they move to the bottom of the rotation list and their hosted date remains in the main tracker.
 - MVP direction notes: all tracker/member pages behind a shared member password; admin tools separately protected.
 - Admin mock page explaining controls and protected data.
 - Telegram reminders design notes only; no live integration.
