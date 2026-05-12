@@ -1,13 +1,11 @@
-const STORAGE_KEY = 'wegene-tracker-prototype-v1';
+const STORAGE_KEY = 'wegene-tracker-mvp-v2';
 const DAY_MS = 24 * 60 * 60 * 1000;
 const CONFIG = window.WEGENE_CONFIG || {};
 
 const $ = (id) => document.getElementById(id);
 
-async function sha256Hex(text) {
-  const bytes = new TextEncoder().encode(text);
-  const digest = await crypto.subtle.digest('SHA-256', bytes);
-  return [...new Uint8Array(digest)].map(b => b.toString(16).padStart(2, '0')).join('');
+function isCorrectPassword(text) {
+  return text.trim() === (CONFIG.memberPassword || 'Wegene2026!');
 }
 
 function isLoggedIn() {
@@ -33,8 +31,7 @@ async function setupLoginGate() {
   $('login-form').addEventListener('submit', async (event) => {
     event.preventDefault();
     const entered = $('member-password').value;
-    const hash = await sha256Hex(entered);
-    if (hash === CONFIG.memberPasswordHash) {
+    if (isCorrectPassword(entered)) {
       sessionStorage.setItem(CONFIG.sessionStorageKey || 'wegene-member-session-v1', 'ok');
       $('member-password').value = '';
       $('login-error').hidden = true;
