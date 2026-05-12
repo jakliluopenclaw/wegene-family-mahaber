@@ -140,7 +140,7 @@ Member-visible behind shared password:
 - Current host/get-ready card
 - Scheduled hosting date
 - Hosting history
-- Pass list summary with member names
+- Passed members labeled in the main tracker; no separate pass queue section on the member page
 - No member call list for now
 
 Current member flow:

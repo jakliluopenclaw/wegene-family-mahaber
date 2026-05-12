@@ -61,7 +61,7 @@ nav a {
 }
 nav a:hover { background: #fff; transform: translateY(-1px); }
 main { max-width: 1180px; margin: 0 auto; padding: 0 20px 44px; }
-.hero { display:grid; grid-template-columns: minmax(0, 1.18fr) minmax(280px, .82fr); gap:18px; align-items:stretch; }
+.hero { display:grid; grid-template-columns: 1fr; gap:18px; align-items:stretch; }
 .card {
   background: rgba(255, 255, 255, 0.82);
   border: 1px solid rgba(255,255,255,.78);

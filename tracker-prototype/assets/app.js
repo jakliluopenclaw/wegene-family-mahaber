@@ -197,10 +197,6 @@ function render(data) {
     $('pass-button').addEventListener('click', () => passCurrentMember(data));
   }
 
-  $('pass-queue').innerHTML = data.state.passQueue.length
-    ? `<ol>${data.state.passQueue.map(id => `<li>${memberById(data, id)?.name || `Member ${id}`}</li>`).join('')}</ol>`
-    : '<p>No passed members waiting.</p>';
-
   $('member-table').innerHTML = sortedActiveMembers(data).map(member => {
     const status = computeMemberStatus(data, member);
     const date = data.state.scheduled?.memberId === member.id ? data.state.scheduled.date : (data.history.find(h => h.memberId === member.id && h.round === data.state.round)?.hostingDate || '—');

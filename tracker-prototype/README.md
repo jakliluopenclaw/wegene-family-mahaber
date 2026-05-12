@@ -10,7 +10,7 @@ Local, Netlify-ready static prototype for the enhanced hosting tracker. It does 
 - Current/Get Ready member simulation.
 - Host/pass flow in browser-only localStorage.
 - 21-day minimum host date validation.
-- Pass queue behavior: after hosting is confirmed, pass queue gets priority.
+- Pass behavior: passed members are labeled in the main tracker; after hosting is confirmed, passed members still get priority behind the scenes.
 - Member-site-safe history table.
 - MVP direction notes: all tracker/member pages behind a shared member password; admin tools separately protected.
 - Admin mock page explaining controls and protected data.
@@ -50,7 +50,7 @@ netlify.toml                Static Netlify publish config
 ## Confirmed MVP access direction
 
 - Use a shared/site-wide member password for the member site MVP.
-- Show pass-list names to logged-in members.
+- Show pass/hosted status labels in the main tracker; no separate pass queue section on the page.
 - Member call list is removed from the member MVP for now.
 - Keep admin tools behind separate admin protection.
 - Do not store passwords, account secrets, Telegram tokens, or private credentials in repo files.
