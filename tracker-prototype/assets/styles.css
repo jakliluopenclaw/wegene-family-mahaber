@@ -23,10 +23,11 @@ body {
   font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   color: var(--ink);
   background:
-    radial-gradient(circle at 14% 16%, rgba(255, 210, 63, 0.56), transparent 27rem),
-    radial-gradient(circle at 82% 8%, rgba(21, 148, 71, 0.44), transparent 30rem),
-    radial-gradient(circle at 76% 82%, rgba(223, 52, 47, 0.30), transparent 28rem),
-    linear-gradient(135deg, #fff7c7 0%, #dff3c7 34%, #bde8c3 62%, #ffe1d8 100%);
+    radial-gradient(circle at 12% 14%, rgba(255, 214, 0, 0.92), transparent 25rem),
+    radial-gradient(circle at 84% 10%, rgba(0, 150, 57, 0.86), transparent 29rem),
+    radial-gradient(circle at 78% 82%, rgba(218, 41, 28, 0.72), transparent 28rem),
+    radial-gradient(circle at 18% 88%, rgba(0, 150, 57, 0.58), transparent 24rem),
+    linear-gradient(135deg, #ffe100 0%, #f7d70a 24%, #10a64f 50%, #fed23a 72%, #da291c 100%);
   background-attachment: fixed;
 }
 body::before {
@@ -34,9 +35,9 @@ body::before {
   position: fixed;
   inset: 0;
   pointer-events: none;
-  background-image: linear-gradient(rgba(255,255,255,.34) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.3) 1px, transparent 1px);
+  background-image: linear-gradient(rgba(255,255,255,.18) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.16) 1px, transparent 1px);
   background-size: 44px 44px;
-  mask-image: linear-gradient(to bottom, rgba(0,0,0,.45), transparent 70%);
+  mask-image: linear-gradient(to bottom, rgba(0,0,0,.30), transparent 72%);
 }
 
 a { color: var(--green-dark); font-weight: 800; }
@@ -62,7 +63,7 @@ nav a:hover { background: #fff; transform: translateY(-1px); }
 main { max-width: 1180px; margin: 0 auto; padding: 0 20px 44px; }
 .hero { display:grid; grid-template-columns: minmax(0, 1.18fr) minmax(280px, .82fr); gap:18px; align-items:stretch; }
 .card {
-  background: var(--card);
+  background: rgba(255, 255, 255, 0.82);
   border: 1px solid rgba(255,255,255,.78);
   border-radius: var(--radius);
   padding: clamp(16px, 2vw, 22px);
@@ -112,7 +113,7 @@ input[type="date"], input[type="password"] { padding: 11px 12px; border:1px soli
 input:focus { border-color: rgba(47, 143, 91, .55); box-shadow: 0 0 0 4px rgba(47, 143, 91, .12); }
 .actions { display:flex; gap:10px; flex-wrap:wrap; align-items:center; }
 .small { padding: 8px 11px; font-size: .85rem; }
-.login-screen { min-height:100vh; display:grid; place-items:center; padding:20px; background:radial-gradient(circle at 20% 18%, rgba(255,210,63,.55), transparent 28rem), radial-gradient(circle at 84% 20%, rgba(21,148,71,.42), transparent 28rem), radial-gradient(circle at 70% 86%, rgba(223,52,47,.28), transparent 24rem), linear-gradient(145deg, rgba(255,248,204,.94), rgba(220,244,222,.92)); }
+.login-screen { min-height:100vh; display:grid; place-items:center; padding:20px; background:radial-gradient(circle at 18% 16%, rgba(255,214,0,.92), transparent 27rem), radial-gradient(circle at 84% 20%, rgba(0,150,57,.82), transparent 28rem), radial-gradient(circle at 70% 86%, rgba(218,41,28,.68), transparent 24rem), linear-gradient(145deg, #ffe100, #0fa64f 58%, #da291c); }
 .login-card { width:min(460px, 100%); background:rgba(255,255,255,.88); border:1px solid rgba(255,255,255,.8); border-radius:28px; padding:30px; box-shadow:var(--shadow); display:grid; gap:15px; backdrop-filter: blur(20px); }
 .login-card label { font-weight:850; color:var(--ink); }
 .login-card input { width:100%; }
