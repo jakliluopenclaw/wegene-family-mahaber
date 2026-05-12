@@ -223,19 +223,6 @@ async function boot() {
   const seed = await loadSeedData();
   let data = JSON.parse(localStorage.getItem(STORAGE_KEY) || 'null') || seed;
   render(data);
-  $('reset-demo').addEventListener('click', () => {
-    localStorage.removeItem(STORAGE_KEY);
-    location.reload();
-  });
-  $('export-state').addEventListener('click', () => {
-    const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = 'wegene-tracker-demo-state.json';
-    a.click();
-    URL.revokeObjectURL(url);
-  });
 }
 
 boot().catch(err => {
