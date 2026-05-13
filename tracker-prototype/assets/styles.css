@@ -129,21 +129,35 @@ footer { text-align:center; color:var(--muted); padding: 24px 20px 34px; }
 
 @media (max-width: 760px) {
   body { background-attachment: scroll; }
-  header { padding-top: 24px; }
-  nav { gap:8px; }
-  nav a, nav button { flex: 1 1 auto; text-align:center; justify-content:center; }
-  main { padding-inline: 14px; }
+  header { padding: 20px 12px 12px; }
+  header h1 { font-size: clamp(1.85rem, 10vw, 2.6rem); }
+  nav { display:grid; grid-template-columns: 1fr 1fr; gap:8px; margin-top:14px; }
+  nav a, nav button { width:100%; text-align:center; justify-content:center; padding-inline:10px; }
+  main { padding: 0 12px 34px; }
   .hero { grid-template-columns: 1fr; }
-  .card { border-radius: 20px; }
+  .card { border-radius: 20px; padding: 15px; }
+  .grid { grid-template-columns: 1fr; }
   .actions { display:grid; grid-template-columns: 1fr; align-items:stretch; }
   .actions > * { width:100%; }
   input[type="date"], input[type="password"] { width:100%; min-width:0; }
-  .member-list { min-width: 560px; }
-  th, td { padding:11px 10px; }
+  .current-person { font-size: clamp(2rem, 13vw, 3rem); flex-wrap:wrap; }
+  .current-person .avatar { width:54px; height:54px; flex-basis:54px; }
+  .current-label { font-size: 1rem; }
+  .member-table-wrap { overflow: visible; border:0; background:transparent; }
+  .member-list { min-width:0; border-collapse: separate; border-spacing: 0 10px; }
+  .member-list thead { display:none; }
+  .member-list, .member-list tbody, .member-list tr, .member-list td { display:block; width:100%; }
+  .member-list tr { border:1px solid var(--line); border-radius:18px; overflow:hidden; box-shadow:0 10px 24px rgba(23,80,46,.08); }
+  .member-list td { display:flex; justify-content:space-between; align-items:center; gap:14px; padding:10px 12px; border-bottom:1px solid var(--line); text-align:right; }
+  .member-list td::before { content: attr(data-label); color:var(--muted); font-weight:850; text-align:left; }
+  .member-list td.name-cell { justify-content:flex-start; text-align:left; }
+  .member-list td.name-cell::before { min-width:62px; }
   .avatar { width:36px; height:36px; flex-basis:36px; }
 }
 
 @media (max-width: 420px) {
-  .member-list { min-width: 500px; font-size: .92rem; }
+  nav { grid-template-columns: 1fr; }
   .login-card { padding:22px; border-radius:22px; }
+  .card { padding: 13px; }
+  ol, ul { padding-left: 1.05rem; }
 }

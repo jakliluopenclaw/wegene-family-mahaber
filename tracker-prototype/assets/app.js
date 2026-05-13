@@ -210,10 +210,10 @@ function render(data) {
     const status = computeMemberStatus(data, member);
     const date = data.state.scheduled?.memberId === member.id ? data.state.scheduled.date : (data.history.find(h => h.memberId === member.id && h.round === data.state.round)?.hostingDate || '—');
     return `<tr class="${member.id === data.state.currentMemberId ? 'current' : ''}">
-      <td>${member.rotationOrder}</td>
-      <td class="name-cell">${renderAvatar(member)} ${member.name}</td>
-      <td>${badge(status)}</td>
-      <td>${date}</td>
+      <td data-label="Order">${member.rotationOrder}</td>
+      <td data-label="Member" class="name-cell">${renderAvatar(member)} ${member.name}</td>
+      <td data-label="Status">${badge(status)}</td>
+      <td data-label="Date">${date}</td>
     </tr>`;
   }).join('');
 
