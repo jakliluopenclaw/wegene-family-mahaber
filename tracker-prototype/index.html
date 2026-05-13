@@ -8,14 +8,14 @@
 </head>
 <body>
   <section class="login-screen" id="login-screen">
-    <form class="login-card" id="login-form">
+    <div class="login-card" id="login-card">
       <h1>🌿 Wegene Family Mahaber</h1>
       <p>Member-only hosting tracker. Enter the shared member password to continue.</p>
       <label for="member-password">Shared member password</label>
-      <input type="password" id="member-password" autocomplete="current-password" required />
-      <button type="submit">Enter tracker</button>
+      <input type="password" id="member-password" autocomplete="current-password" />
+      <button type="button" id="login-button">Enter tracker</button>
       <p class="error" id="login-error" hidden>Incorrect password. Please try again.</p>
-    </form>
+    </div>
   </section>
 
   <div id="app-shell" hidden>

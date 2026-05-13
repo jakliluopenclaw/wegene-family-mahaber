@@ -22,23 +22,28 @@ function showLogin() {
   $('app-shell').hidden = true;
 }
 
+function unlockIfPasswordMatches() {
+  const entered = $('member-password').value;
+  if (isCorrectPassword(entered)) {
+    sessionStorage.setItem(CONFIG.sessionStorageKey || 'wegene-member-session-v1', 'ok');
+    $('member-password').value = '';
+    $('login-error').hidden = true;
+    showApp();
+    return true;
+  }
+  $('login-error').hidden = false;
+  return false;
+}
+
 async function setupLoginGate() {
   if (isLoggedIn()) {
     showApp();
     return true;
   }
   showLogin();
-  $('login-form').addEventListener('submit', async (event) => {
-    event.preventDefault();
-    const entered = $('member-password').value;
-    if (isCorrectPassword(entered)) {
-      sessionStorage.setItem(CONFIG.sessionStorageKey || 'wegene-member-session-v1', 'ok');
-      $('member-password').value = '';
-      $('login-error').hidden = true;
-      showApp();
-    } else {
-      $('login-error').hidden = false;
-    }
+  $('login-button').addEventListener('click', unlockIfPasswordMatches);
+  $('member-password').addEventListener('keydown', (event) => {
+    if (event.key === 'Enter') unlockIfPasswordMatches();
   });
   return false;
 }
