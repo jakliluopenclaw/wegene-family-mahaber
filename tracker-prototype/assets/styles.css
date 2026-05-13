@@ -47,9 +47,9 @@ header {
   max-width: 1180px;
   margin: 0 auto;
 }
-header h1 { letter-spacing: -0.04em; }
+header h1 { letter-spacing: -0.04em; text-align:center; text-wrap: balance; }
 header p { max-width: 820px; }
-nav { display:flex; gap:10px; flex-wrap:wrap; margin-top: 18px; align-items:center; }
+nav { display:flex; gap:10px; flex-wrap:wrap; margin-top: 18px; align-items:center; justify-content:center; }
 nav a {
   background: rgba(255,255,255,.72);
   border:1px solid var(--line);
