@@ -73,6 +73,9 @@ main { max-width: 1180px; margin: 0 auto; padding: 0 20px 44px; }
   box-shadow: var(--shadow);
   backdrop-filter: blur(18px);
 }
+.current-card { text-align:center; }
+.current-card .current-person { justify-content:center; }
+.current-card .actions { justify-content:center; }
 .stack { display:grid; gap:16px; }
 .grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap:16px; }
 h1 { margin: 0; font-size: clamp(2rem, 5vw, 3.75rem); line-height: .98; }
