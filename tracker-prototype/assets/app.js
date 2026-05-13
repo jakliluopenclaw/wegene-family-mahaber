@@ -223,7 +223,7 @@ function render(data) {
   const min = minHostDate();
   $('current-actions').innerHTML = scheduled
     ? `<button class="secondary" id="confirm-hosted">Demo: confirm hosted</button><span class="badge scheduled">Minimum date rule met</span>`
-    : `<input type="date" id="host-date" min="${min}" aria-label="Hosting date" />
+    : `<label class="date-field" for="host-date"><span>Hosting date</span><input type="date" id="host-date" min="${min}" aria-label="Hosting date" /></label>
        <button id="host-button">📅 I will host</button>
        <button class="warn" id="pass-button">❌ I will pass</button>
        <span class="badge waiting">Earliest: ${min}</span>`;

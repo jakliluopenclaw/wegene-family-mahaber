@@ -113,9 +113,12 @@ button.secondary { background: linear-gradient(135deg, var(--blue), #185f9a); }
 button.warn { background: linear-gradient(135deg, var(--red), #9f312d); }
 button.ghost { background:rgba(255,255,255,.76); color:var(--green-dark); border:1px solid var(--line); box-shadow:none; }
 button:disabled { opacity:.45; cursor:not-allowed; }
-input[type="date"], input[type="password"] { padding: 11px 12px; border:1px solid var(--line); border-radius:14px; background:#fff; min-width: 170px; outline: none; }
+input[type="date"], input[type="password"] { padding: 11px 12px; border:1px solid var(--line); border-radius:14px; background:#fff; color:var(--ink); min-width: 170px; min-height:48px; outline: none; color-scheme: light; }
 input:focus { border-color: rgba(47, 143, 91, .55); box-shadow: 0 0 0 4px rgba(47, 143, 91, .12); }
-.actions { display:flex; gap:10px; flex-wrap:wrap; align-items:center; }
+.date-field { display:grid; gap:6px; font-weight:850; color:var(--green-dark); }
+.date-field span { font-size:.9rem; }
+.date-field input { width:100%; font-weight:800; }
+.actions { display:flex; gap:10px; flex-wrap:wrap; align-items:end; }
 .small { padding: 8px 11px; font-size: .85rem; }
 #app-shell[hidden], #login-screen[hidden] { display:none !important; }
 body.is-authenticated #login-screen { display:none !important; }
@@ -142,7 +145,11 @@ footer { text-align:center; color:var(--muted); padding: 24px 20px 34px; }
   .grid { grid-template-columns: 1fr; }
   .actions { display:grid; grid-template-columns: 1fr; align-items:stretch; }
   .actions > * { width:100%; }
-  input[type="date"], input[type="password"] { width:100%; min-width:0; }
+  input[type="date"], input[type="password"] { width:100%; min-width:0; min-height:54px; font-size:16px; }
+  input[type="date"] { appearance:auto; -webkit-appearance:auto; background:#fff; color:var(--ink); }
+  input[type="date"]::-webkit-date-and-time-value { text-align:left; color:var(--ink); }
+  input[type="date"]::-webkit-calendar-picker-indicator { opacity:1; width:28px; height:28px; }
+  .date-field { width:100%; }
   .current-person { font-size: clamp(2rem, 13vw, 3rem); flex-wrap:wrap; }
   .current-person .avatar { width:54px; height:54px; flex-basis:54px; }
   .current-label { font-size: 1rem; }
