@@ -96,7 +96,7 @@ tr:last-child td { border-bottom:0; }
 .current-person { display:flex; align-items:center; gap:4px; font-size: clamp(1.75rem, 4vw, 2.75rem); font-weight: 950; color: var(--green-dark); letter-spacing: -0.04em; line-height: 1.05; }
 .current-person .avatar { width:58px; height:58px; flex-basis:58px; font-size:1.1rem; }
 .current-label { display:block; margin-top:8px; font-size:1.08rem; font-weight:850; color:var(--muted); }
-.current-inline-label { font-size: clamp(1.05rem, 2.4vw, 1.45rem); font-weight:900; color:var(--muted); letter-spacing:-0.02em; }
+.current-inline-label { font-size: clamp(.95rem, 2.2vw, 1.35rem); font-weight:900; color:var(--muted); letter-spacing:-0.02em; white-space:nowrap; }
 .scheduled-line { display:block; margin-top:8px; }
 button, input, select, textarea { font: inherit; }
 button {
@@ -146,7 +146,7 @@ footer { text-align:center; color:var(--muted); padding: 24px 20px 34px; }
   .actions { display:grid; grid-template-columns: 1fr; align-items:stretch; }
   .actions > * { width:100%; }
   input[type="date"], input[type="password"] { width:100%; min-width:0; min-height:54px; font-size:16px; }
-  .current-person { font-size: clamp(2rem, 13vw, 3rem); flex-wrap:wrap; }
+  .current-person { font-size: clamp(1.65rem, 9vw, 2.4rem); flex-wrap:nowrap; }
   .current-person .avatar { width:54px; height:54px; flex-basis:54px; }
   .current-label { font-size: 1rem; }
   .member-table-wrap { overflow: visible; border:0; background:transparent; }
