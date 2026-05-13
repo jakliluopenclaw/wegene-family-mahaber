@@ -145,6 +145,11 @@ function showMessage(text) {
   box.hidden = false;
 }
 
+function askForHostDate(min) {
+  const chosen = prompt(`Choose hosting date (${min} or later):`, min);
+  return chosen ? chosen.trim() : '';
+}
+
 function scheduleHost(data, dateValue) {
   if (!dateValue) return showMessage('Please choose a hosting date first.');
   const selected = parseDateInput(dateValue);
@@ -223,14 +228,13 @@ function render(data) {
   const min = minHostDate();
   $('current-actions').innerHTML = scheduled
     ? `<button class="secondary" id="confirm-hosted">Demo: confirm hosted</button><span class="badge scheduled">Minimum date rule met</span>`
-    : `<label class="date-field" for="host-date"><span>Hosting date</span><input type="date" id="host-date" min="${min}" value="${min}" aria-label="Hosting date" /></label>
-       <button id="host-button">📅 I will host</button>
+    : `<button id="host-button">📅 I will host</button>
        <button class="warn" id="pass-button">❌ I will pass</button>
-       <span class="badge waiting">Earliest: ${min}</span>`;
+       <span class="badge waiting">Earliest host date: ${min}</span>`;
 
   if (scheduled) $('confirm-hosted').addEventListener('click', () => confirmHosted(data));
   else {
-    $('host-button').addEventListener('click', () => scheduleHost(data, $('host-date').value));
+    $('host-button').addEventListener('click', () => scheduleHost(data, askForHostDate(min)));
     $('pass-button').addEventListener('click', () => passCurrentMember(data));
   }
 
