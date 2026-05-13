@@ -48,6 +48,9 @@ header {
   margin: 0 auto;
 }
 header h1 { letter-spacing: -0.04em; text-align:center; text-wrap: balance; }
+.site-logo { display:block; object-fit:cover; border-radius:28px; box-shadow:0 18px 44px rgba(8, 103, 47, .24); border:3px solid rgba(255,255,255,.72); }
+.header-logo { width:120px; height:120px; margin:0 auto 16px; }
+.login-logo { width:112px; height:112px; margin:0 auto 4px; }
 header p { max-width: 820px; }
 nav { display:flex; gap:10px; flex-wrap:wrap; margin-top: 18px; align-items:center; justify-content:center; }
 nav a {
@@ -137,6 +140,8 @@ footer { text-align:center; color:var(--muted); padding: 24px 20px 34px; }
   body { background-attachment: scroll; }
   header { padding: 20px 12px 12px; }
   header h1 { font-size: clamp(1.85rem, 10vw, 2.6rem); }
+  .header-logo { width:96px; height:96px; margin-bottom:12px; }
+  .login-logo { width:94px; height:94px; }
   nav { display:grid; grid-template-columns: 1fr 1fr; gap:8px; margin-top:14px; }
   nav a, nav button { width:100%; text-align:center; justify-content:center; padding-inline:10px; }
   main { padding: 0 12px 34px; }
