@@ -189,7 +189,7 @@ function render(data) {
   const current = memberById(data, data.state.currentMemberId);
   const scheduled = data.state.scheduled;
   $('current-summary').innerHTML = current
-    ? `${renderAvatar(current)} <strong>${current.name}</strong> is current/Get Ready. Round ${data.state.round}. ${scheduled ? `<br>Scheduled date: <strong>${scheduled.date}</strong>` : ''}`
+    ? `<span class="current-person">${renderAvatar(current)} <strong>${current.name}</strong></span><span class="current-label">is next / Get Ready</span>${scheduled ? `<br><span class="scheduled-line">Scheduled date: <strong>${scheduled.date}</strong></span>` : ''}`
     : 'No current member selected.';
 
   const min = minHostDate();
