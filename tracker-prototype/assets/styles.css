@@ -115,8 +115,9 @@ button.ghost { background:rgba(255,255,255,.76); color:var(--green-dark); border
 button:disabled { opacity:.45; cursor:not-allowed; }
 input[type="date"], input[type="password"] { padding: 11px 12px; border:1px solid var(--line); border-radius:14px; background:#fff; color:var(--ink); min-width: 170px; min-height:48px; outline: none; color-scheme: light; }
 input:focus { border-color: rgba(47, 143, 91, .55); box-shadow: 0 0 0 4px rgba(47, 143, 91, .12); }
-.actions { display:flex; gap:10px; flex-wrap:wrap; align-items:end; }
+.actions { display:flex; gap:10px; flex-wrap:wrap; align-items:end; position:relative; }
 .actions button { min-height:48px; }
+.hidden-date-picker { position:absolute; width:1px !important; height:1px !important; min-width:0 !important; min-height:0 !important; opacity:0; pointer-events:none; left:12px; bottom:12px; }
 .small { padding: 8px 11px; font-size: .85rem; }
 #app-shell[hidden], #login-screen[hidden] { display:none !important; }
 body.is-authenticated #login-screen { display:none !important; }
