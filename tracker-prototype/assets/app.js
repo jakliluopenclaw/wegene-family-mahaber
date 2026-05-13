@@ -8,24 +8,48 @@ function isCorrectPassword(text) {
   return text.trim() === (CONFIG.memberPassword || 'Wegene2026!');
 }
 
+function readSessionFlag() {
+  try {
+    return sessionStorage.getItem(CONFIG.sessionStorageKey || 'wegene-member-session-v1');
+  } catch (_) {
+    return null;
+  }
+}
+
+function writeSessionFlag() {
+  try {
+    sessionStorage.setItem(CONFIG.sessionStorageKey || 'wegene-member-session-v1', 'ok');
+  } catch (_) {
+    localStorage.setItem(CONFIG.sessionStorageKey || 'wegene-member-session-v1', 'ok');
+  }
+}
+
+function clearSessionFlag() {
+  try { sessionStorage.removeItem(CONFIG.sessionStorageKey || 'wegene-member-session-v1'); } catch (_) {}
+  try { localStorage.removeItem(CONFIG.sessionStorageKey || 'wegene-member-session-v1'); } catch (_) {}
+}
+
 function isLoggedIn() {
-  return sessionStorage.getItem(CONFIG.sessionStorageKey || 'wegene-member-session-v1') === 'ok';
+  return readSessionFlag() === 'ok' || localStorage.getItem(CONFIG.sessionStorageKey || 'wegene-member-session-v1') === 'ok';
 }
 
 function showApp() {
-  $('login-screen').hidden = true;
+  document.body.classList.add('is-authenticated');
+  const login = $('login-screen');
+  if (login) login.remove();
   $('app-shell').hidden = false;
 }
 
 function showLogin() {
-  $('login-screen').hidden = false;
-  $('app-shell').hidden = true;
+  document.body.classList.remove('is-authenticated');
+  const shell = $('app-shell');
+  if (shell) shell.hidden = true;
 }
 
 function unlockIfPasswordMatches() {
   const entered = $('member-password').value;
   if (isCorrectPassword(entered)) {
-    sessionStorage.setItem(CONFIG.sessionStorageKey || 'wegene-member-session-v1', 'ok');
+    writeSessionFlag();
     $('member-password').value = '';
     $('login-error').hidden = true;
     showApp();
@@ -41,9 +65,13 @@ async function setupLoginGate() {
     return true;
   }
   showLogin();
+  window.unlockWegeneTracker = unlockIfPasswordMatches;
   $('login-button').addEventListener('click', unlockIfPasswordMatches);
   $('member-password').addEventListener('keydown', (event) => {
-    if (event.key === 'Enter') unlockIfPasswordMatches();
+    if (event.key === 'Enter') {
+      event.preventDefault();
+      unlockIfPasswordMatches();
+    }
   });
   return false;
 }
@@ -222,8 +250,8 @@ function render(data) {
 async function boot() {
   const loginReady = await setupLoginGate();
   $('logout-button').addEventListener('click', () => {
-    sessionStorage.removeItem(CONFIG.sessionStorageKey || 'wegene-member-session-v1');
-    showLogin();
+    clearSessionFlag();
+    location.reload();
   });
   const seed = await loadSeedData();
   let data = JSON.parse(localStorage.getItem(STORAGE_KEY) || 'null') || seed;
